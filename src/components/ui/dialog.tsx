@@ -200,11 +200,11 @@ const DialogWithTrigger = ({
   }
 
   // S'assurer que le trigger est un seul élément React
-  const triggerElement = React.isValidElement(trigger) ? 
-    React.cloneElement(trigger, {
-      className: cn(trigger.props?.className, triggerClassName)
-    }) : 
-    <button className={triggerClassName}>{trigger}</button>;
+  const triggerElement = React.isValidElement(trigger)
+    ? React.cloneElement(trigger as React.ReactElement, {
+        className: cn((trigger as any).props?.className, triggerClassName),
+      })
+    : <button className={triggerClassName}>{trigger}</button>;
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange} {...props}>

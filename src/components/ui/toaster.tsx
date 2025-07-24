@@ -7,7 +7,6 @@ import { X } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { useToast } from "./use-toast"
-import type { ToastProps } from "./toast"
 
 const ToastProvider = ToastPrimitives.Provider
 

@@ -1,10 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-
-export const metadata = {
-  title: 'Portfolio - Edenshuu',
-  description: 'Découvrez nos projets de traduction et nos réalisations pour des clients du monde entier.',
-}
 
 const projects = [
   {

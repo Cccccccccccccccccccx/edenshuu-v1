@@ -142,34 +142,8 @@ const Toggle = React.forwardRef<
 
 Toggle.displayName = TogglePrimitive.Root.displayName
 
-// Toggle group component
-const ToggleGroup = TogglePrimitive.Group
-
-const ToggleGroupItem = React.forwardRef<
-  React.ElementRef<typeof TogglePrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> &
-    VariantProps<typeof toggleVariants> & {
-      /**
-       * Whether to show only the icon
-       */
-      iconOnly?: boolean
-    }
->(({ className, variant, size, iconOnly, ...props }, ref) => (
-  <TogglePrimitive.Root
-    ref={ref}
-    className={cn(
-      toggleVariants({ variant, size, className }),
-      iconOnly && "!p-0"
-    )}
-    {...props}
-  />
-))
-
-ToggleGroupItem.displayName = TogglePrimitive.Root.displayName
 
 export {
   Toggle,
-  ToggleGroup,
-  ToggleGroupItem,
   toggleVariants,
 }

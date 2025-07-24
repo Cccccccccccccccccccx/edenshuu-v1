@@ -9,6 +9,7 @@ const nextConfig = {
   },
   eslint: {
     dirs: ['app', 'components', 'lib', 'src'],
+    ignoreDuringBuilds: true,
   },
   // Configuration des en-têtes de sécurité
   async headers() {

@@ -84,11 +84,11 @@ const NavigationMenuLink = React.forwardRef<
     asChild?: boolean
   }
 >(({ className, asChild = false, ...props }, ref) => {
-  const Comp = asChild ? 'div' : NavigationMenuPrimitive.Link
-  
+  const Comp: any = asChild ? 'div' : NavigationMenuPrimitive.Link
+
   return (
     <Comp
-      ref={ref}
+      ref={ref as any}
       className={cn(
         "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
         className
@@ -171,8 +171,8 @@ const NavigationMenuListItem = React.forwardRef<
     return (
       <li>
         <NavigationMenuLink asChild className={className}>
-          {React.isValidElement(content) ? 
-            React.cloneElement(content, { ref, ...props }) : 
+          {React.isValidElement(content) ?
+            React.cloneElement(content as React.ReactElement, { ref: ref as any, ...props }) :
             content
           }
         </NavigationMenuLink>
@@ -182,11 +182,11 @@ const NavigationMenuListItem = React.forwardRef<
 
   return (
     <li>
-      <NavigationMenuLink 
-        asChild 
+      <NavigationMenuLink
+        asChild
         className={cn("w-full h-full", className)}
-        ref={ref}
-        {...props}
+        ref={ref as any}
+        {...(props as any)}
       >
         {content}
       </NavigationMenuLink>

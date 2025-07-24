@@ -5,7 +5,7 @@ import { Button } from "./button"
 import { Input } from "./input"
 import { Label } from "./label"
 import { cn } from "@/lib/utils"
-import { Check, EyeDropper, Palette, X } from "lucide-react"
+import { Check, Pipette as EyeDropper, Palette, X } from "lucide-react"
 
 interface ColorPickerProps {
   /**
