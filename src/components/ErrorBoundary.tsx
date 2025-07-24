@@ -38,7 +38,7 @@ class ErrorBoundary extends Component<Props, State> {
       return this.props.fallback || (
         <div className="flex min-h-screen flex-col items-center justify-center p-4">
           <div className="w-full max-w-md space-y-6">
-            <Alert variant="destructive">
+            <Alert variant="error">
               <AlertCircle className="h-4 w-4" />
               <AlertTitle>Une erreur est survenue</AlertTitle>
               <AlertDescription>

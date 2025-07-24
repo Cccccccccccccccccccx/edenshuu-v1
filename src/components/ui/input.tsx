@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils"
 import { Loader2, X, Search, Eye, EyeOff, Check, AlertCircle } from "lucide-react"
 
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'prefix' | 'suffix'> {
   /**
    * Optional prefix element (like an icon) to display before the input
    */
@@ -59,7 +59,7 @@ export interface InputProps
   /**
    * Size variant of the input
    */
-  size?: 'sm' | 'md' | 'lg'
+  inputSize?: 'sm' | 'md' | 'lg'
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -79,7 +79,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     helperText,
     label,
     id,
-    size = 'md',
+    inputSize = 'md',
     value,
     ...props
   }, ref) => {
@@ -104,15 +104,15 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
     const renderSuffix = () => {
       if (isLoading) {
-        return <Loader2 className={cn(iconSizeClasses[size], "animate-spin text-muted-foreground")} />
+        return <Loader2 className={cn(iconSizeClasses[inputSize], "animate-spin text-muted-foreground")} />
       }
       
       if (hasError) {
-        return <AlertCircle className={cn(iconSizeClasses[size], "text-destructive")} />
+        return <AlertCircle className={cn(iconSizeClasses[inputSize], "text-destructive")} />
       }
       
       if (isValid) {
-        return <Check className={cn(iconSizeClasses[size], "text-emerald-500")} />
+        return <Check className={cn(iconSizeClasses[inputSize], "text-emerald-500")} />
       }
       
       if (showClearBtn) {
@@ -122,7 +122,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onClick={onClear}
             className="rounded-full p-0.5 text-muted-foreground hover:bg-muted hover:text-foreground"
           >
-            <X className={iconSizeClasses[size]} />
+            <X className={iconSizeClasses[inputSize]} />
           </button>
         )
       }
@@ -135,13 +135,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onClick={() => setShowPassword(!showPassword)}
             className="text-muted-foreground hover:text-foreground"
           >
-            <Icon className={iconSizeClasses[size]} />
+            <Icon className={iconSizeClasses[inputSize]} />
           </button>
         )
       }
       
       if (isSearch) {
-        return <Search className={cn(iconSizeClasses[size], "text-muted-foreground")} />
+        return <Search className={cn(iconSizeClasses[inputSize], "text-muted-foreground")} />
       }
       
       return suffix
@@ -172,7 +172,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             id={inputId}
             className={cn(
               "flex w-full rounded-md border border-input bg-background font-medium ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-              inputSizeClasses[size],
+    inputSizeClasses[inputSize],
               {
                 'pl-9': prefix,
                 'pr-9': showSuffix,
